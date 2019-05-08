@@ -2,3 +2,5 @@
 *.xlsx
 *.csv
 .DS_Store
+Data
+.ipynb_checkpoints
