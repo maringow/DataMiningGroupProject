@@ -35,14 +35,14 @@ survey_pivot_trimmed = survey_pivot[['Provider ID', 'H_CLEAN_LINEAR_SCORE', 'H_C
 df = outcomes_pivot.merge(survey_pivot_trimmed, how='outer', on='Provider ID')
 # df.to_csv(path_or_buf='C:/Users/mgow/Documents/UChicago/Courses/Data Mining/Group Project/joinedData.csv')
 
-# add back hospital metadata columns - location, number of survey responses
+# add back hospital metadata columns - location fields, number of survey responses
 metadata = survey[['Provider ID', 'Hospital Name', 'Address', 'City', 'State', 'ZIP Code',
                    'Number of Completed Surveys', 'Survey Response Rate Percent']].drop_duplicates()
 # metadata.to_csv(path_or_buf='C:/Users/mgow/Documents/UChicago/Courses/Data Mining/Group Project/metadata2.csv')
 
 df_full = df.merge(metadata, how='left', on='Provider ID')
-#df_full.to_csv(path_or_buf='C:/Users/mgow/Documents/UChicago/Courses/Data Mining/Group Project/fullData.csv')
+# df_full.to_csv(path_or_buf='C:/Users/mgow/Documents/UChicago/Courses/Data Mining/Group Project/fullData.csv')
 
 # replace 'Not Available' values with blanks
 df_full.replace(to_replace=['Not Available', 'Not Applicable'], value=[np.nan, np.nan], inplace=True)
-df_full.to_csv(path_or_buf='C:/Users/mgow/Documents/UChicago/Courses/Data Mining/Group Project/fullDataReplaced.csv')
+# df_full.to_csv(path_or_buf='C:/Users/mgow/Documents/UChicago/Courses/Data Mining/Group Project/fullDataReplaced.csv')
